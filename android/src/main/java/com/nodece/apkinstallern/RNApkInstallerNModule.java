@@ -33,16 +33,13 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule {
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
       if (requestCode == REQUEST_CODE) {
         if (mPickerPromise != null) {
-          Log.d("SUPER-PORTAL-APP", String.valueOf(resultCode));
+          // Log.d("SUPER-PORTAL-APP", String.valueOf(resultCode));
           // Log.d("SUPER-PORTAL-APP", String.valueOf(Activity.RESULT_CANCELED));
-          Log.d("SUPER-PORTAL-APP", String.valueOf(Activity.RESULT_OK));
-          Log.d("SUPER-PORTAL-APP", String.valueOf(Activity.RESULT_FIRST_USER));
           if (resultCode == Activity.RESULT_CANCELED) {
             mPickerPromise.reject(E_INSTALL_CANCELLED, "package installer was cancelled");
           } else {
             mPickerPromise.resolve(resultCode + " package install success");
           }
-          // mPickerPromise.resolve(resultCode + " package install success");
 
           mPickerPromise = null;
         }
